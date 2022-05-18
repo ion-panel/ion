@@ -25,6 +25,11 @@ type Config struct {
 	// will use to login to the dashboard.
 	//
 	AdminPassword string `json:"admin_password"`
+
+	// Host holds the host IONs webserver will run on.
+	// Ex: :8080 -> localhost:8080
+	//
+	Host string `json:"host"`
 }
 
 // New creates a new instance of the ion config file.
@@ -53,6 +58,10 @@ func (c *Config) RetrieveAdminPassword() string {
 	return c.Get().AdminPassword
 }
 
+func (c *Config) GetHost() string {
+	return c.Get().Host
+}
+
 // Exists checks if the config file named `ion_config.json` exists. Returns true
 // if it does, returns false if it doesn't.
 func (c *Config) Exists() bool {
@@ -71,7 +80,8 @@ func (c *Config) Create() os.File {
 	file.Write([]byte(`{
     "api_key": "api-key",
     "admin_username": "username",
-    "admin_password": "password"
+    "admin_password": "password",
+	"host": ":8080"
 }`))
 	if err != nil {
 		panic(err)

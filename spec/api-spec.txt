@@ -1,5 +1,9 @@
-//  `ion` can be overwritten in the config
-//	ion/{key}/playerCount/
-//  ion/{key}/maxPlayers/
-//  ion/{key}/playerList/
-//  ion/{key}/serverStats/
+API TO FOLLOW (may change)
+
+//
+// /key/server/maxPlayers
+// /key/server/playerCount
+// /key/server/open
+// /key/server/close
+//
+//

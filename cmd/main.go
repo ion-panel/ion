@@ -30,15 +30,21 @@ func main() {
 	dashboard := &ion.Dashboard{}
 
 	fmt.Println(bootStr)
-	fmt.Println("Instance running on:  :2000\n")
 
-	//http.HandleFunc("/admin/index", acc.Index)
+	ss := http.FileServer(http.Dir("./static"))
+	http.Handle("/", ss)
+	fmt.Println("CSS Handeling server started: ")
+
+	// endpoints
 	http.HandleFunc("/admin/login", acc.Login)
-
+	http.HandleFunc("/dashboard/logout/", acc.Logout)
 	http.HandleFunc("/dashboard/index/", dashboard.Index)
-	http.HandleFunc("/dashboard/logout/", dashboard.Logout)
 
-	err := http.ListenAndServe(":2000", nil)
+	fmt.Println("Handlers initialized.")
+
+	fmt.Println("Instance running on: " + conf.GetHost())
+
+	err := http.ListenAndServe(conf.GetHost(), nil)
 	if err != nil {
 		return
 	}
