@@ -1,0 +1,5 @@
+//  `ion` can be overwritten in the config
+//	ion/{key}/playerCount/
+//  ion/{key}/maxPlayers/
+//  ion/{key}/playerList/
+//  ion/{key}/serverStats/
